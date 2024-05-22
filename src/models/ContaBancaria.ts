@@ -33,6 +33,20 @@ export class ContaBancaria {
     this._conta = "00000-0";
   }
 
+  get agencia(): string {
+    return this._agencia;
+  }
+
+  set agencia(valor: string) {
+    const regex = /^\d{4}-\d{1}$/;
+
+    if (regex.test(valor)) {
+      this._agencia = valor;
+    } else {
+      console.log("[ERRO] Tentaiva de cadastro de agência invalida!");
+    }
+  }
+
   get conta(): string {
     return this._conta;
   }
