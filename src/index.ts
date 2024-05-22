@@ -23,3 +23,6 @@ if (saque1) {
 } else {
   console.log("[ERRO] Tentativa de saque de valor invalido!");
 }
+
+conta1.conta = "02213-1";
+console.log(conta1);
