@@ -27,10 +27,10 @@ export class ContaBancaria {
   private _conta: string;
   private _agencia: string;
 
-  constructor() {
+  constructor(conta: string, agencia: string) {
     this._saldo = 0;
-    this._agencia = "0000-0";
-    this._conta = "00000-0";
+    this._agencia = this._validarAgencia(agencia) ? agencia : "0000-0";
+    this._conta = this._validarConta(conta) ? conta : "00000-0";
   }
 
   get agencia(): string {
@@ -38,9 +38,7 @@ export class ContaBancaria {
   }
 
   set agencia(valor: string) {
-    const regex = /^\d{4}-\d{1}$/;
-
-    if (regex.test(valor)) {
+    if (this._validarAgencia(valor)) {
       this._agencia = valor;
     } else {
       console.log("[ERRO] Tentaiva de cadastro de agência invalida!");
@@ -52,8 +50,7 @@ export class ContaBancaria {
   }
 
   set conta(valor: string) {
-    const regex = /^\d{5}-\d{1}$/;
-    if (regex.test(valor)) {
+    if (this._validarConta(valor)) {
       this._conta = valor;
     } else {
       console.log("[ERRO] Tentaiva de cadastro de conta invalida!");
@@ -75,6 +72,22 @@ export class ContaBancaria {
   depositar(valor: number): boolean {
     if (valor > 0) {
       this._saldo += valor;
+      return true;
+    }
+    return false;
+  }
+
+  private _validarConta(conta: string): boolean {
+    const regex = /^\d{5}-\d{1}$/;
+    if (regex.test(conta)) {
+      return true;
+    }
+    return false;
+  }
+
+  private _validarAgencia(agencia: string): boolean {
+    const regex = /^\d{4}-\d{1}$/;
+    if (regex.test(agencia)) {
       return true;
     }
     return false;
