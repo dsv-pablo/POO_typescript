@@ -1,4 +1,4 @@
-import { ContaBancaria } from "./models/ContaBancaria";
+import { ArquivosJsonDAO } from "./model/dao/ArquivosJsonDAO";
 
-const conta1 = new ContaBancaria("01234-1", "0123-1");
-console.log(conta1);
+const testInstace = new ArquivosJsonDAO();
+console.log(testInstace.recuperarContatos());
