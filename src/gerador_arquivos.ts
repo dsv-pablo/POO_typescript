@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { fakerPT_BR as faker } from "@faker-js/faker";
 import { writeFileSync } from "fs";
 import { join } from "path";
 
