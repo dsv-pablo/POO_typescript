@@ -1,4 +1,4 @@
-import { ArquivosJsonDAO } from "./model/dao/ArquivosJsonDAO";
+import { ArquivosCsvDAO } from "./model/dao/ArquivosCsvDAO";
 
-const testInstace = new ArquivosJsonDAO();
+const testInstace = new ArquivosCsvDAO();
 console.log(testInstace.recuperarContatos());
